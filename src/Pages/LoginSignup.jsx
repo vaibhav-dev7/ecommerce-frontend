@@ -17,14 +17,16 @@ export const LoginSignup = () => {
   const login = async () =>{
     console.log("Login Function Executed",formData);
     let responseData;
-    await fetch("http://localhost:4000/login", {
+    await fetch("https://ecommerce-backend-9zu6.onrender.com/login", {
       method: "POST",
       headers: {
         Accept: "application/form-data",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    }).then((response)=> response.json()).then((data)=>responseData=data)
+    })
+      .then((response) => response.json())
+      .then((data) => (responseData = data));
 
     if(responseData.success){
       localStorage.setItem('auth-token',responseData.token);
@@ -38,14 +40,16 @@ export const LoginSignup = () => {
   const signup = async () =>{
     console.log("Signup Function Executed",formData);
     let responseData;
-    await fetch("http://localhost:4000/signup", {
+    await fetch("https://ecommerce-backend-9zu6.onrender.com/signup", {
       method: "POST",
       headers: {
         Accept: "application/form-data",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    }).then((response)=> response.json()).then((data)=>responseData=data)
+    })
+      .then((response) => response.json())
+      .then((data) => (responseData = data));
 
     if(responseData.success){
       localStorage.setItem('auth-token',responseData.token);
